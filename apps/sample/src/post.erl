@@ -1,7 +1,7 @@
 -module(post).
 -compile(export_all).
--include_lib("n2o/include/wf.hrl").
--include_lib("records.hrl").
+-include_lib("nitro/include/nitro.hrl").
+-include("records.hrl").
 
 main() ->
   {Id, _} = string:to_integer(binary_to_list(wf:q(<<"id">>))),

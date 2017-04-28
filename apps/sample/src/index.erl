@@ -26,12 +26,13 @@ title() ->
 event(init) ->
   wf:reg(room);
 event(chat) ->
+  wf:info(?MODULE,"Message: ~p", [wf:q(message)]),
   wf:send(room,{client,{peer(),message()}});
 event({client,{P,M}}) ->
   wf:insert_bottom(history,#panel{id=history,body=[P,": ",M,#br{}]});
 event(button_pressed) ->
   Message = wf:q(message2),
-  wf:info("Message: ~p", [Message]);
+  wf:info(?MODULE,"Message 2: ~p", [Message]);
 event(Event) ->
   wf:info(?MODULE,"Unknown Event: ~p~n",[Event]).
 
